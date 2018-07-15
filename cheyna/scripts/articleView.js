@@ -78,7 +78,7 @@ articleView.setTeasers = () => {
 // This is called in the new.html page...
 articleView.initNewArticlePage = () => {
   // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
-
+  
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
@@ -108,13 +108,13 @@ articleView.create = () => {
   });
 
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
-
-
+  let template = Handlebars.compile($('#article-template').text());
   // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
   $('pre code').each();
 
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-
+  
+  return template;
 };
 
 // COMMENT: Where is this function called? Why?
