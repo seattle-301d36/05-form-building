@@ -9,9 +9,24 @@
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
+    
     <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
+
     <link>
     <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
+    <script id="article-template" type="text/x-handlebars-template">
+      <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div>
+            By <address><a href="{{authorUrl}}">{{author}}</a></address>
+            {{publishStatus}}
+          </div>
+        </header>
+        <section class="article-body">{{{body}}}</section>
+        <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+      </script>
     </head>
   <body>
     <header class="clearfix">
@@ -42,19 +57,19 @@
            5. Article category
            6. Some way to know if this article is a draft or is published -->
 
-           <form action="#" id+"new-article-form"> 
+           <form action="#" id="new-article-form"> 
              <label for="">
-               <input type="text" id="article-title" placeholder = "Article Title" required>
+               <input type="text" id="article-title" placeholder="Article Title" required>
              </label>
              <textarea name="article-body" id="article-body" cols="40" rows="8"></textarea>
              <label for="">
               <input type="text" id="author-title" placeholder = "Author Title" required>
             </label>
             <label for="">
-              <input type="text" id="article-author-url" placeholder = "Author Url" required>
+              <input type="text" id="article-author-url" placeholder="Author Url" required>
             </label>
             <label for="">
-              <input type="text" id="article-category" placeholder = "category" required>
+              <input type="text" id="article-category" placeholder ="category" required>
             </label>
             <label for="">
               <input type="checkbox" id="article-published"> Published
@@ -69,7 +84,7 @@
 
       <section id="article-export">
         <!-- TODO: Refer to the preview image to see what we will be building here: we need a container of some kind to hold a JSON export of our article. Ideally this container would show only a incipit (short preview) of the JSON and also be clickable to allow easy selection of the text it holds. What kind of element could we use for this? -->
-        <label for="article-json" id="export-field" class="pull-right" >
+        <label for="article-json" id="export-field" class="pull-right">
           <input type="text" readonly id= "article-json">
           When finalized copy the above JSON and paste into blog article.js
         </label>
@@ -92,7 +107,7 @@
       //  Hint: Look in articleView.js for a function that does this.
       articleView.initNewArticlePage();
       // COMMENT: What is this function doing? Why do we need it?
-      // PUT YOUR RESPONSE HERE
+      // This function is set up to run the functions from articleView after the scripts and libraries have loaded 
     </script>
   </body>
 </html>

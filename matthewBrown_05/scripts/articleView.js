@@ -75,7 +75,7 @@ articleView.setTeasers = () => {
 };
 
 // COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// this is called at the bottom of the index page. This is to make sure that the function runs after the libraries and other .js files have loaded before running this code that manipulates the DOM 
 articleView.initNewArticlePage = () => {
   // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
 
@@ -93,21 +93,23 @@ articleView.initNewArticlePage = () => {
 
 articleView.create = () => {
   // TODO: Set up a variable to hold the new article we are creating.
+  // let newArticle;
   // Clear out the #articles element, so we can put in the updated preview
   // let newArticle;
 
   // TODO: Instantiate an article based on what's in the form fields:
-  const newArticle = new Article ({
+  const newArticle = new Article({
     title: $('#article-title').val(),
     author: $('#article-author').val(),
     authorUrl:$('#article-author-url').val(),
     category: $('#article-category').val(),
     body:$('#article-body').val(),
-    publishedOn:$('#article-published:checked').length? new Date () : null,
+    publishedOn:$('#article-published:checked').length ? new Date() : null,
   });
 
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
-
+  article.prototype.toHtml = function() {
+    let template = Handlebars.compile($('#new-article').text());
 
   // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
   $('pre code').each();
@@ -117,7 +119,7 @@ articleView.create = () => {
 };
 
 // COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// this is called on the index page. It is listed there so that the other scripts and libraries on the index have had a chance to load before running the below functions on page load 
 articleView.initIndexPage = () => {
   articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();
