@@ -10,9 +10,23 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
-    <link>
+    <link rel="stylesheet" href="vendor/styles/default.css">
+    <link rel="stylesheet" href="vendor/styles/railscasts.css">
     <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
-    </head>
+    <script id ="article-preview-template" type="text/x-handlebars-template">
+      <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div>
+            By <address><a href="{{authorUrl}}">{{author}}</a></address>
+            {{publishStatus}}
+          </div>
+        </header>
+        <section class="article-body">{{{body}}}</section>
+        <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+    </script>    
+  </head>
   <body>
     <header class="clearfix">
       <section class="pull-left">
@@ -89,7 +103,7 @@
       //  Hint: Look in articleView.js for a function that does this.
       articleView.initNewArticlePage();
       // COMMENT: What is this function doing? Why do we need it?
-      // PUT YOUR RESPONSE HERE
+      // You need a function here to initialize the behaviors on this page. No idea.
     </script>
   </body>
 </html>
