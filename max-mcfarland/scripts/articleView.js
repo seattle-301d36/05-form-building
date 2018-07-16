@@ -75,10 +75,10 @@ articleView.setTeasers = () => {
 };
 
 // COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// This function is call at the end of the body tag in the new.html file. This is done to initialize all other js files prior to the calling of this file.
 articleView.initNewArticlePage = () => {
-  // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
-  const tabContent = $('.tab-content');
+  // DONE: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
+  let article;
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
@@ -90,6 +90,7 @@ articleView.initNewArticlePage = () => {
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
   $('#new-article-form').on('change', 'input, textarea', articleView.create);
   //add tohtml to respond to this event 
+
 };
 
 articleView.create = () => {
@@ -107,8 +108,9 @@ articleView.create = () => {
   });
 
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
-
-
+  let preview = $('#articles').html();
+  let compilePreview = Handlebars.compile(preview);
+  return compilePreview(newArticle);
   // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
   $('pre code').each();
 
