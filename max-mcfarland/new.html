@@ -11,7 +11,20 @@
     <link rel="stylesheet" href="styles/modules.css">
     <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
     <link>
-    <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
+    <script type="text/x-handlebars-template" id="articlePreview">
+      <article >
+        <header>
+          <h1>{{title}}</h1>
+          <div>
+            By <address><a href={{authorUrl}}>{{author}}</a></address>
+            published <time pubdate datetime="2000-01-01">{{publishStatus}}</time>
+          </div>
+        </header>
+        <section class="article-body">{{{body}}}</section>
+        <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+    </script>
+    <!-- DONE: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
     </head>
   <body>
     <header class="clearfix">
@@ -66,7 +79,7 @@
       </section>
 
       <section id="article-export">
-        <!-- TODO: Refer to the preview image to see what we will be building here: we need a container of some kind to hold a JSON export of our article. Ideally this container would show only a incipit (short preview) of the JSON and also be clickable to allow easy selection of the text it holds. What kind of element could we use for this? -->
+        <!-- DONE: Refer to the preview image to see what we will be building here: we need a container of some kind to hold a JSON export of our article. Ideally this container would show only a incipit (short preview) of the JSON and also be clickable to allow easy selection of the text it holds. What kind of element could we use for this? -->
       <label id="export-field" for="article-json" class="pull-right" >
         <input type="text" readonly id="article-json"> When finialized, copy the above the above JSON and paste into blogArticles. 
       </label>
@@ -89,7 +102,7 @@
       //  Hint: Look in articleView.js for a function that does this.
       articleView.initNewArticlePage();
       // COMMENT: What is this function doing? Why do we need it?
-      // PUT YOUR RESPONSE HERE
+      // This function is calling the initiNewArticlePage, which is giving funcitonality to our dynamic article previewer.
     </script>
   </body>
 </html>
